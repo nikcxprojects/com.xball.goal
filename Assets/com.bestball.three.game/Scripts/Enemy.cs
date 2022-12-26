@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -13,7 +12,13 @@ public class Enemy : MonoBehaviour
 
         Target.OnPressed += (target) =>
         {
-            Vector2 direction = target.transform.position - transform.position;
+            Target rv = Targets[Random.Range(0, Targets.Length)];
+            Vector2 direction = rv.transform.position - transform.position;
+
+            if(rv == target)
+            {
+                Progress.UpdateProgress();
+            }
 
             Rigidbody.AddForce(direction.normalized * force, ForceMode2D.Impulse);
             Invoke(nameof(ResetMe), 2.5f);

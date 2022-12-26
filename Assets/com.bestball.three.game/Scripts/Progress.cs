@@ -18,6 +18,6 @@ public class Progress : MonoBehaviour
 
     public static void UpdateProgress()
     {
-        FillAmount.fillAmount = ++Current / 1.0f;
+        FillAmount.fillAmount = ++Current / 10.0f;
     }
 }

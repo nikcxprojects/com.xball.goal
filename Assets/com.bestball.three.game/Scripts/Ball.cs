@@ -10,9 +10,8 @@ public class Ball : MonoBehaviour
 
     private Transform Center { get; set; }
 
-    //private const float totalDistance = 4.0f;
     public float totalDistance = 4.0f;
-    private const float force = 80;
+    private const float force = 60;
 
     private static Rigidbody2D Rigidbody { get; set; }
     private static Vector2 Velocity { get; set; }
