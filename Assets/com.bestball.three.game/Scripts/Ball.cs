@@ -3,7 +3,7 @@ using UnityEngine;
 
 using Random = UnityEngine.Random;
 
-public class BallPenalty : MonoBehaviour
+public class Ball : MonoBehaviour
 {
     private Vector2 InitScale { get; set; } = Vector3.one * 0.5f;
     private Vector2 TargetScale { get; set; } = Vector3.one * 0.3f;

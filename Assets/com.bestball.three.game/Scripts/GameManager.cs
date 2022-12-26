@@ -6,12 +6,12 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        BallPenalty.OnTravelled += OnTravelldEvent;
+        Ball.OnTravelled += OnTravelldEvent;
     }
 
     private void OnDestroy()
     {
-        BallPenalty.OnTravelled -= OnTravelldEvent;
+        Ball.OnTravelled -= OnTravelldEvent;
     }
 
     private void OnTravelldEvent()
