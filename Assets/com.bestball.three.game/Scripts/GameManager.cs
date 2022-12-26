@@ -10,19 +10,9 @@ public class GameManager : MonoBehaviour
     private GameObject EnemyRef { get; set; }
     private GameObject MarkRef { get; set; }
 
-    private void OnEnable()
+    private void Start()
     {
-        Ball.OnTravelled += OnTravelldEvent;
-    }
-
-    private void OnDestroy()
-    {
-        Ball.OnTravelled -= OnTravelldEvent;
-    }
-
-    private void OnTravelldEvent()
-    {
-
+        AudioListener.pause = true;
     }
 
     public void StartGame()

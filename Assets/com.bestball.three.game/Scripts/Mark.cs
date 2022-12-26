@@ -6,6 +6,7 @@ public class Mark : MonoBehaviour
     {
         Target.OnPressed += (target) =>
         {
+            GameObject.Find("sfx sound").GetComponent<AudioSource>().Play();
             transform.position = target.transform.position;
         };
     }
