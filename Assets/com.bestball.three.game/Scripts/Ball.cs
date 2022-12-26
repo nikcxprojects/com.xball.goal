@@ -9,7 +9,6 @@ public class Ball : MonoBehaviour
     private Vector2 TargetScale { get; set; } = Vector3.one * 0.5f;
 
     private Transform Center { get; set; }
-    private Transform Target { get; set; }
 
     //private const float totalDistance = 4.0f;
     public float totalDistance = 4.0f;
@@ -22,31 +21,35 @@ public class Ball : MonoBehaviour
     public static Action OnTravelled { get; set; }
     public static Action OnPressed { get; set; }
 
+    private void Awake()
+    {
+        Target.OnPressed += (target) =>
+        {
+            Rigidbody.WakeUp();
+            OnPressed?.Invoke();
+
+            Vector2 direction = target.transform.position - transform.position;
+
+            Rigidbody.AddForce(direction.normalized * force, ForceMode2D.Impulse);
+            Invoke(nameof(ResetMe), 2.5f);
+
+            Target[] targets = FindObjectsOfType<Target>();
+            foreach (Target t in targets)
+            {
+                t.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                t.gameObject.GetComponent<CircleCollider2D>().enabled = false;
+            }
+
+            FindObjectOfType<Mark>().GetComponent<SpriteRenderer>().enabled = false;
+        };
+    }
+
     private void Start()
     {
         Center = GameObject.Find("center").transform;
-        Target = GameObject.Find("target").transform;
-
         Rigidbody = GetComponent<Rigidbody2D>();
 
         ResetMe();
-    }
-
-    private void OnMouseDown()
-    {
-        if(Rigidbody.velocity.sqrMagnitude > 0)
-        {
-            return;
-        }
-
-        Rigidbody.WakeUp();
-        OnPressed?.Invoke();
-
-        Target.position = new Vector2(Random.Range(-2.21f, 2.21f), Random.Range(-0.5f, 1.72f));
-        Vector2 direction = Target.position - transform.position;
-
-        Rigidbody.AddForce(direction.normalized * force, ForceMode2D.Impulse);
-        Invoke(nameof(ResetMe), 2.5f);
     }
 
     private void Update()
@@ -70,5 +73,15 @@ public class Ball : MonoBehaviour
 
         transform.position = new Vector2(-4.81f, -2.79f);
         Rigidbody.Sleep();
+
+        Target[] targets = FindObjectsOfType<Target>();
+        foreach (Target t in targets)
+        {
+            t.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            t.gameObject.GetComponent<CircleCollider2D>().enabled = true;
+        }
+
+        FindObjectOfType<Mark>().transform.position = new Vector2(0, 1000);
+        FindObjectOfType<Mark>().GetComponent<SpriteRenderer>().enabled = true;
     }
 }
