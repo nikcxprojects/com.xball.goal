@@ -8,7 +8,7 @@ public class Progress : MonoBehaviour
 
     private void Awake()
     {
-        FillAmount = GetComponentInChildren<Image>();
+        FillAmount = transform.GetChild(0).GetComponent<Image>();
     }
 
     private void Start()
