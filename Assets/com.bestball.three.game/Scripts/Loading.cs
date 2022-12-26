@@ -14,6 +14,7 @@ public class Loading : MonoBehaviour
     {
         getStarted.onClick.AddListener(() =>
         {
+            OnLoadingFinished?.Invoke();
             Destroy(gameObject);
         });
     }
@@ -27,6 +28,5 @@ public class Loading : MonoBehaviour
         yield return new WaitForSeconds(loadingTime);
 
         getStarted.gameObject.SetActive(true);
-        OnLoadingFinished?.Invoke();
     }
 }
