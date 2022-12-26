@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
             if(rv == target)
             {
                 Progress.UpdateProgress();
+                Instantiate(Resources.Load<Popup>("popup"), GameObject.Find("main canvas").transform);
             }
 
             Rigidbody.AddForce(direction.normalized * force, ForceMode2D.Impulse);

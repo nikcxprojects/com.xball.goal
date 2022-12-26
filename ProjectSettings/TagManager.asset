@@ -6,6 +6,7 @@ TagManager:
   tags:
   - platform
   - over zone
+  - enemy
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - enemy
+  - ball
   - 
   - 
   - 
