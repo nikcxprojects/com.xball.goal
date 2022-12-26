@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject loading;
     [SerializeField] GameObject menu;
+    [SerializeField] GameObject game;
     [SerializeField] ChooseCountry chooseCountry;
 
     [Space(10)]
@@ -20,12 +21,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image countryIcon;
     [SerializeField] Text countryName;
 
+    [Space(10)]
+    [SerializeField] GameObject canvasLandscape;
+
     private void Awake()
     {
         Loading.OnLoadingStarted += () =>
         {
             menu.SetActive(false);
             progress.SetActive(false);
+            game.SetActive(false);
+
             chooseCountry.gameObject.SetActive(false);
         };
 
@@ -37,7 +43,12 @@ public class UIManager : MonoBehaviour
 
         startBtn.onClick.AddListener(() =>
         {
+            canvasLandscape.SetActive(false);
 
+            menu.SetActive(false);
+            game.SetActive(true);
+
+            GameManager.Instance.StartGame();
         });
 
         chooseCountryBtn.onClick.AddListener(() =>
@@ -62,7 +73,12 @@ public class UIManager : MonoBehaviour
 
     public void OpenMenu()
     {
+        canvasLandscape.SetActive(true);
         chooseCountry.gameObject.SetActive(false);
+
+        game.SetActive(false);
         menu.SetActive(true);
+
+        GameManager.Instance.EndGame();
     }
 }
