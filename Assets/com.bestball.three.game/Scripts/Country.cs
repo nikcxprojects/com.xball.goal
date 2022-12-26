@@ -10,7 +10,7 @@ public class Country : MonoBehaviour
     {
         GetComponent<Button>().onClick.AddListener(() =>
         {
-            UIManager.Instance.SetCountry(sprite, _name);
+            UIManager.Instance.SetCountry(sprite, _name, transform.GetSiblingIndex());
         });
     }
 }

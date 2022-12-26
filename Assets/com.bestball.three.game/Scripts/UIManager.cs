@@ -52,9 +52,17 @@ public class UIManager : MonoBehaviour
         loading.SetActive(true);
     }
 
-    public void SetCountry(Sprite icon, string name)
+    public void SetCountry(Sprite icon, string name, int id)
     {
         countryIcon.sprite = icon;
         countryName.text = name;
+
+        chooseCountry.SetCountry(id);
+    }
+
+    public void OpenMenu()
+    {
+        chooseCountry.gameObject.SetActive(false);
+        menu.SetActive(true);
     }
 }
