@@ -1501,6 +1501,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85557f9bee185004981786d4605ff1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  confirm: {fileID: 306103334}
+  ready: {fileID: 21300000, guid: 5b5eed64815171543b45b396a75936df, type: 3}
+  hold: {fileID: 21300000, guid: 55492719b64227245806ff8e63c79ed2, type: 3}
   countries:
   - {fileID: 1316510775}
   - {fileID: 755182400}

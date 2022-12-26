@@ -22,8 +22,8 @@ public class ChooseCountry : MonoBehaviour
                 countries[i].interactable = true;
             }
 
-            confirm.GetComponent<Image>().sprite = ready;
-            confirm.interactable = true;
+            confirm.GetComponent<Image>().sprite = hold;
+            confirm.interactable = false;
         });
 
         confirm.onClick.AddListener(() =>
@@ -39,7 +39,7 @@ public class ChooseCountry : MonoBehaviour
             countries[i].interactable = id == i;
         }
 
-        confirm.GetComponent<Image>().sprite = hold;
-        confirm.interactable = false;
+        confirm.GetComponent<Image>().sprite = ready;
+        confirm.interactable = true;
     }
 }
