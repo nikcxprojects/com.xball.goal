@@ -44,6 +44,11 @@ public class Ball : MonoBehaviour
         };
     }
 
+    private void OnDestroy()
+    {
+        Target.OnPressed = null;
+    }
+
     private void Start()
     {
         Center = GameObject.Find("center").transform;
