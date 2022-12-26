@@ -12,10 +12,10 @@ public class Enemy : MonoBehaviour
 
         Target.OnPressed += (target) =>
         {
-            Target rv = Targets[Random.Range(0, Targets.Length)];
+            Target rv = Random.Range(0,100) > 70 ? target : Targets[Random.Range(0, Targets.Length)];
             Vector2 direction = rv.transform.position - transform.position;
 
-            if(rv == target)
+            if(rv != target)
             {
                 Progress.UpdateProgress();
                 Instantiate(Resources.Load<Popup>("popup"), GameObject.Find("main canvas").transform);
