@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     private GameObject PlaceRef { get; set; }
     private GameObject BallRef { get; set; }
     private GameObject EnemyRef { get; set; }
+    private GameObject MarkRef { get; set; }
 
     private void OnEnable()
     {
@@ -32,11 +33,12 @@ public class GameManager : MonoBehaviour
         PlaceRef = Instantiate(Resources.Load<GameObject>("place"), Vector2.down * 4.69f, Quaternion.identity, parent);
         BallRef = Instantiate(Resources.Load<GameObject>("ball"), new Vector2(-4.81f, -2.79f), Quaternion.identity, parent);
         EnemyRef = Instantiate(Resources.Load<GameObject>("enemy"), new Vector2(0, -0.52f), Quaternion.identity, parent);
+        EnemyRef = Instantiate(Resources.Load<GameObject>("mark"), new Vector2(0, 1000), Quaternion.identity, parent);
     }
 
     public void EndGame()
     {
-        if (!GoalRef || !PlaceRef || !BallRef || !EnemyRef)
+        if (!GoalRef || !PlaceRef || !BallRef || !EnemyRef || !MarkRef)
         {
             return;
         }
@@ -45,5 +47,6 @@ public class GameManager : MonoBehaviour
         Destroy(PlaceRef);
         Destroy(BallRef);
         Destroy(EnemyRef);
+        Destroy(MarkRef);
     }
 }
