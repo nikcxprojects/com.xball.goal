@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class SettingsBtn : MonoBehaviour
 {
-    private bool Enable { get; set; }
     [SerializeField] GameObject root;
 
     private void Start()
@@ -12,8 +11,12 @@ public class SettingsBtn : MonoBehaviour
 
         GetComponent<Button>().onClick.AddListener(() =>
         {
-            Enable = !Enable;
-            root.SetActive(Enable);
+            root.SetActive(true);
+        });
+
+        root.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            root.SetActive(false);
         });
     }
 }
